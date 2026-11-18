@@ -38,18 +38,24 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
     </div>
     <div class="offcanvas-body pt-0">
-      <a class="menu-link" href="index.html">Home <small>01</small></a>
-      <a class="menu-link active" href="programs.html">Programs <small>03</small></a>
-      <div class="menu-sub">
+      <a class="menu-link" href="index.html">Home</a>
+
+      <button class="menu-link menu-toggle collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#programsMenu"
+              aria-expanded="false" aria-controls="programsMenu">
+        Programs <i class="bi bi-chevron-down" aria-hidden="true"></i>
+      </button>
+      <div class="collapse menu-sub" id="programsMenu">
         <a href="programs.html#beans">Beans · Seed Library</a>
         <a href="programs.html#beads">Beads · Craft Workshops</a>
         <a href="programs.html#register">Get Involved · Register</a>
       </div>
-      <a class="menu-link" href="about.html">About &amp; Contact <small>05</small></a>
+
+      <a class="menu-link active" href="about.html">About &amp; Contact</a>
       <p class="mt-4 mb-0 small" style="color:var(--mint)">Growing food. Repurposing what we discard. Las Piñas City.</p>
     </div>
   </div>
-
+  
   <main id="main">
 
     <!-- ============ BEANS ============ -->
@@ -188,7 +194,7 @@
           </div>
           <div class="wg">
             <aside class="wishlist reveal reveal-left" aria-labelledby="wishTitle">
-              <h3 id="wishTitle">Material Donation<br>Wishlist</h3>
+              <h3 id="wishTitle">Material Donation<br> Wishlist</h3>
               <label class="wish"><input type="checkbox"><span>Clean fabric scraps &amp; old linens</span></label><label class="wish"><input type="checkbox"><span>Plastic bottle caps &amp; cardboard containers</span></label><label class="wish"><input type="checkbox"><span>Yarn, embroidery floss &amp; ribbons</span></label><label class="wish"><input type="checkbox"><span>Wooden beads, buttons &amp; craft wire</span></label><label class="wish"><input type="checkbox"><span>Non-toxic paints &amp; washable brushes</span></label>
             </aside>
             <div class="gal reveal reveal-right">
