@@ -1,12 +1,5 @@
-/* ==========================================================
-   Beans & Beads — site behaviour
-   Vanilla JS on top of Bootstrap 5.
-   ========================================================== */
+const REGISTRATION_FORM_URL = "https://forms.gle/5PieX9QA6cerrd3S7";
 
-/* >>> Paste your published Google Form link here (used by every "Open Registration Form" button) <<< */
-const REGISTRATION_FORM_URL = "https://forms.gle/REPLACE_WITH_YOUR_GOOGLE_FORM";
-
-/* Set to true to automatically close registration for workshop dates that have already passed. */
 const CLOSE_PAST_WORKSHOPS = false;
 
 (() => {
@@ -19,10 +12,9 @@ const CLOSE_PAST_WORKSHOPS = false;
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage blocked */ } },
   };
 
-  /* ---------- Page transition ---------- */
   const markReady = () => { document.body.classList.remove("is-loading", "is-leaving"); document.body.classList.add("is-ready"); };
   if (document.readyState === "complete") markReady(); else window.addEventListener("load", markReady);
-  setTimeout(markReady, 2500); // safety net
+  setTimeout(markReady, 2500); 
   window.addEventListener("pageshow", (e) => { if (e.persisted) markReady(); });
 
   document.addEventListener("click", (e) => {
@@ -32,10 +24,9 @@ const CLOSE_PAST_WORKSHOPS = false;
     const url = new URL(a.href, location.href);
     if (url.origin !== location.origin) return;
     const samePage = url.pathname === location.pathname;
-    if (samePage) return; // in-page anchors scroll normally
+    if (samePage) return; 
     if (reduceMotion) return;
     e.preventDefault();
-    // close the menu first if it is open
     const oc = bootstrap.Offcanvas.getInstance($("#menu"));
     if (oc) oc.hide();
     document.body.classList.remove("is-ready");
@@ -43,11 +34,9 @@ const CLOSE_PAST_WORKSHOPS = false;
     setTimeout(() => { location.href = a.href; }, 520);
   });
 
-  /* ---------- Config links ---------- */
   $$("[data-form-link]").forEach((a) => { a.href = REGISTRATION_FORM_URL; });
   $$("[data-year]").forEach((n) => { n.textContent = new Date().getFullYear(); });
 
-  /* ---------- Scroll vine + sticky nav shadow ---------- */
   const fill = $(".vine-fill");
   const nav = $(".site-nav");
   const onScroll = () => {
@@ -59,7 +48,6 @@ const CLOSE_PAST_WORKSHOPS = false;
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Reveal on scroll ---------- */
   const revealEls = $$(".reveal");
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -68,7 +56,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     revealEls.forEach((el) => io.observe(el));
   } else revealEls.forEach((el) => el.classList.add("in"));
 
-  /* ---------- Count-up stats ---------- */
   const counters = $$("[data-count]");
   if (counters.length) {
     const cio = new IntersectionObserver((entries) => {
@@ -89,7 +76,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     counters.forEach((c) => cio.observe(c));
   }
 
-  /* ---------- Toast helper ---------- */
   const toastEl = $("#appToast");
   const showToast = (msg) => {
     if (!toastEl) return;
@@ -97,7 +83,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 4500 }).show();
   };
 
-  /* ---------- Seed library: filter ---------- */
   $$(".chip[data-filter]").forEach((chip) => chip.addEventListener("click", () => {
     $$(".chip[data-filter]").forEach((c) => { c.classList.remove("active"); c.setAttribute("aria-pressed", "false"); });
     chip.classList.add("active"); chip.setAttribute("aria-pressed", "true");
@@ -109,7 +94,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     });
   }));
 
-  /* ---------- Seed request / donate modal ---------- */
   const seedModalEl = $("#seedModal");
   if (seedModalEl) {
     const seedModal = new bootstrap.Modal(seedModalEl);
@@ -137,7 +121,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     });
   }
 
-  /* ---------- Workshops: slots + register modal ---------- */
   const regLog = store.get("bb_workshop_reg", {});
   const todayManila = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Manila" }).format(new Date()); // YYYY-MM-DD
   $$(".workshop").forEach((w) => {
@@ -178,7 +161,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     });
   }
 
-  /* ---------- Wishlist persistence ---------- */
   const wishes = $$(".wish input");
   if (wishes.length) {
     const saved = store.get("bb_wish", []);
@@ -191,7 +173,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     });
   }
 
-  /* ---------- Gallery lightbox ---------- */
   const lbEl = $("#lightbox");
   if (lbEl) {
     const lb = new bootstrap.Modal(lbEl);
@@ -201,7 +182,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     }));
   }
 
-  /* ---------- Track tabs scroll-spy (programs page) ---------- */
   const tabs = $$(".track-tabs a");
   if (tabs.length && "IntersectionObserver" in window) {
     const map = new Map(tabs.map((t) => [t.getAttribute("href").slice(1), t]));
@@ -213,7 +193,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     map.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
   }
 
-  /* ---------- Team quote read more ---------- */
   $$(".t-card").forEach((card) => {
     const q = $(".q", card), btn = $(".more", card);
     if (!q || !btn) return;
@@ -224,7 +203,6 @@ const CLOSE_PAST_WORKSHOPS = false;
     });
   });
 
-  /* ---------- Office hours: highlight today + open now (Manila time) ---------- */
   const hours = $(".hrs");
   if (hours) {
     const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Manila", weekday: "short", hour: "numeric", hour12: false }).formatToParts(new Date());
