@@ -38,14 +38,20 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
     </div>
     <div class="offcanvas-body pt-0">
-      <a class="menu-link" href="index.html">Home <small>01</small></a>
-      <a class="menu-link" href="programs.html">Programs <small>03</small></a>
-      <div class="menu-sub">
+      <a class="menu-link" href="index.html">Home</a>
+
+      <button class="menu-link menu-toggle collapsed" type="button"
+              data-bs-toggle="collapse" data-bs-target="#programsMenu"
+              aria-expanded="false" aria-controls="programsMenu">
+        Programs <i class="bi bi-chevron-down" aria-hidden="true"></i>
+      </button>
+      <div class="collapse menu-sub" id="programsMenu">
         <a href="programs.html#beans">Beans · Seed Library</a>
         <a href="programs.html#beads">Beads · Craft Workshops</a>
         <a href="programs.html#register">Get Involved · Register</a>
       </div>
-      <a class="menu-link active" href="about.html">About &amp; Contact <small>05</small></a>
+
+      <a class="menu-link active" href="about.html">About &amp; Contact</a>
       <p class="mt-4 mb-0 small" style="color:var(--mint)">Growing food. Repurposing what we discard. Las Piñas City.</p>
     </div>
   </div>
@@ -84,36 +90,44 @@
     </section>
 
     <section class="contact" id="contact">
-      <div class="container">
-        <div class="ct-grid">
-          <div class="reveal">
-            <h2>Contact Us</h2>
-            <p class="ct">Las Pinas City<br>Botanical Garden</p>
-          </div>
-          <div class="ct reveal" style="--d:.08s">
-            <b>Email:</b><a href="mailto:hello@beansandbeads.org">hello@beansandbeads.org</a>
-            <b class="gap">Phone:</b><a href="tel:+63288001234">(02) 8800-1234</a>
-          </div>
-          <div class="ct reveal" style="--d:.16s">
-            <b>Phone:</b><a href="tel:+639123456789">09123456789</a>
-          </div>
-          <div class="hrsbox reveal" style="--d:.24s">
-            <div class="ct"><b>Office Hours: <span id="openNow" class="open-pill"></span></b></div>
-            <div class="hrs">
-              <div data-days="Tue Wed Thu Fri">Tuesday – Friday: 8:00 AM – 5:00 PM</div>
-              <div data-days="Sat Sun">Saturday – Sunday: 7:00 AM – 4:00 PM</div>
-              <div data-days="Mon">Monday: Closed</div>
-            </div>
-            <div class="social">
-              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-              <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-            </div>
-          </div>
+  <div class="container">
+    <div class="ct-grid">
+
+      <div class="reveal ct-head">
+        <h2>Contact Us</h2>
+        <p class="ct">Las Pinas City<br>Botanical Garden</p>
+      </div>
+
+      <div class="ct reveal ct-col2" style="--d:.08s">
+        <div class="ct-email"><b>Email:</b><a href="mailto:hello@beansandbeads.org">hello@beansandbeads.org</a></div>
+        <div class="ct-tel">
+          <b><span class="lbl-d">Phone:</span><span class="lbl-t">Telephone:</span></b>
+          <a href="tel:+63288001234">(02) 8800-1234</a>
         </div>
       </div>
-    </section>
+
+      <div class="ct reveal ct-mob" style="--d:.16s">
+        <b>Phone:</b><a href="tel:+639123456789">09123456789</a>
+      </div>
+
+      <div class="hrsbox reveal" style="--d:.24s">
+        <div class="ct"><b>Office Hours: <span id="openNow" class="open-pill"></span></b></div>
+        <div class="hrs">
+          <div data-days="Tue Wed Thu Fri">Tuesday – Friday: 8:00 AM – 5:00 PM</div>
+          <div data-days="Sat Sun">Saturday – Sunday: 7:00 AM – 4:00 PM</div>
+          <div data-days="Mon">Monday: Closed</div>
+        </div>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
   </main>
 
 <!-- ===== FOOTER ===== -->
